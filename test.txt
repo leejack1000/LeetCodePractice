@@ -1,0 +1,69 @@
+public class Solution
+{
+    public int[] TwoSum(int[] nums, int target) 
+    {
+        /*
+        int y = 0;
+        for(int x = 0; x < nums.Length - 1; ++x)
+        {
+            for(y = x + 1; y < nums.Length; ++y)
+            {
+                if((nums[x] + nums[y]) == target)
+                {
+                    return new int[2]{x, y};
+                }
+            }
+        }
+        
+        return null;
+        */
+        
+        int currentValue = 0;
+        Hashtable map = new Hashtable();
+        for (int i = 0; i < nums.Length; ++i) 
+        {
+            currentValue = nums[i];
+            int complement = target - currentValue;
+            if (map.ContainsKey(complement)) 
+            {
+                return new int[] { (int)map[complement], i };
+            }
+            
+            if(map.ContainsKey(currentValue))
+            {
+                map[currentValue] = i;
+            }
+            else
+            {                
+                map.Add(currentValue, i);
+            }
+        }
+        return null;
+        
+        /*
+        int currentValue = 0;
+        int value = 0;
+        Dictionary<int, int> map = new Dictionary<int, int>();
+        for (int i = 0; i < nums.Length; ++i) 
+        {
+            currentValue = nums[i];
+            int complement = target - currentValue;
+            if (map.TryGetValue(complement, out value)) 
+            {
+                return new int[] { value, i };
+            }
+            
+            if(map.ContainsKey(currentValue))
+            {
+                map[currentValue] = i;
+            }
+            else
+            {                
+                map.Add(currentValue, i);
+            }
+        }
+        return null;
+        */
+        
+    }
+}
