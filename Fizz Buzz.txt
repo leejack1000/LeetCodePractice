@@ -1,0 +1,182 @@
+/*
+Problem:
+
+Write a program that outputs the string representation of numbers from 1 to n.
+
+But for multiples of three it should output ¡§Fizz¡¨ instead of the number and for the multiples of five output ¡§Buzz¡¨. For numbers which are multiples of both three and five output ¡§FizzBuzz¡¨.
+
+Example:
+
+n = 15,
+
+Return:
+[
+    "1",
+    "2",
+    "Fizz",
+    "4",
+    "Buzz",
+    "Fizz",
+    "7",
+    "8",
+    "Fizz",
+    "Buzz",
+    "11",
+    "Fizz",
+    "13",
+    "14",
+    "FizzBuzz"
+]
+*/
+
+public class Solution
+{
+    /*
+    const int Three = 3;
+    const int Five = 5;
+    const int ThreeMultiplyFive = Three * Five;
+    
+    const string MultiplesOfThree = "Fizz";
+    const string MultiplesOfFive = "Buzz";
+    const string MultiplesOfThreeAndFive = MultiplesOfThree + MultiplesOfFive;
+    
+    static readonly Dictionary<int, string> map = new Dictionary<int, string>()
+    {
+        { ThreeMultiplyFive, MultiplesOfThreeAndFive }
+        ,{ Five, MultiplesOfFive }
+        ,{ Three, MultiplesOfThree }
+    };
+    
+    public IList<string> FizzBuzz(int n) 
+    {
+        IList<String> list = new List<String>(n);
+        
+        string tmp = string.Empty;
+        for(int i = 1; i <= n; ++i)
+        {
+            bool added = false;
+            
+            Dictionary<int, string>.Enumerator enumerator = map.GetEnumerator();
+            while(enumerator.MoveNext())
+            {
+                if(0 == i % enumerator.Current.Key)
+                {
+                    added = true;
+                    list.Add(enumerator.Current.Value);
+                    break;
+                }
+            }
+            
+            if(!added)
+            {
+                list.Add(i.ToString());
+            }
+        }
+        
+        return list;
+    }
+    */
+    
+    /*
+    public IList<string> FizzBuzz(int n) 
+    {
+        IList<String> list = new List<String>(n);
+        
+        for(int i = 1; i <= n; ++i)
+        {
+            if(0 == i % 3)
+            {
+                list.Add("Fizz");
+            }
+            else if(0 == i % 5)
+            {
+                list.Add("Buzz");
+            }
+            else
+            {
+                list.Add(i.ToString());
+            }
+            
+            if(i % 15 == 0)
+            {
+                list[i - 1] += "Buzz";
+            }
+        }
+        
+        //for(int i = 15; i <= n; i += 15)
+        //{
+        //    list[i - 1] += "Buzz";
+        //}
+        
+        return list;
+    }
+    */
+    /*
+    public List<String> FizzBuzz(int n) 
+    {
+        List<string> ret = new List<string>(n);
+        for(int i = 1, fizz = 0, buzz = 0; i <= n; ++i)
+        {
+            ++fizz;
+            ++buzz;
+            if(fizz==3 && buzz==5)
+            {
+                ret.Add("FizzBuzz");
+                fizz=0;
+                buzz=0;
+            }
+            else if(fizz==3)
+            {
+                ret.Add("Fizz");
+                fizz=0;
+            }
+            else if(buzz==5)
+            {
+                ret.Add("Buzz");
+                buzz=0;
+            }
+            else
+            {
+                ret.Add(i.ToString());
+            }
+        } 
+        return ret;
+    }
+    */
+    
+    public List<String> FizzBuzz(int n)
+    {
+        List<string> result = new List<string>(n);
+
+        for(int i = 1, fizz = 3, buzz = 5; i <= n; ++i)
+        {
+            string addVal = null;
+            
+            if(i == fizz && i == buzz)
+            //if(fizz == buzz)
+            {
+                addVal = "FizzBuzz"; 
+                fizz += 3;
+                buzz += 5;
+            }
+            else if(i == fizz)
+            {
+                addVal = "Fizz";
+                fizz += 3;
+            }
+            else if(i == buzz)
+            {
+                addVal ="Buzz";
+                buzz += 5;
+            }
+            else
+            {
+                addVal = i.ToString();
+            }
+            
+            result.Add(addVal); 
+        }
+        
+        return result;
+    }
+}
